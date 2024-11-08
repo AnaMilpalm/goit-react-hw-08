@@ -1,6 +1,7 @@
 import './App.css';
 import ContactForm from './components/ContactForm/ContactForm';
 import ContactsList from './components/ContactList/ContactList';
+import "modern-normalize";
 import Filter from './components/Filter/Filter';
 import { useState, useEffect } from 'react';
 import inicialsContacts from './assets/contacts.json'; 
@@ -36,7 +37,7 @@ function App() {
   );
 
   return (
-    <div>
+    <div className='wrapper'>
       <h1>Phonebook</h1>
       <ContactForm onAdd={addContact} />
       <Filter value={filter} onFilter={setFilter} />

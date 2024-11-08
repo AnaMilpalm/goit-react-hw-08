@@ -30,11 +30,15 @@ const ContactForm = ({ onAdd }) => {
     >
     
       <Form className={s.form} >
-        <Field className={s.field} type="text" name="username" placeholder="Name" />
+        <label className={s.label}>Name
+        <Field className={s.field} type="text" name="username"  />
         <ErrorMessage name="username" component="span" className={s.error} />
-        <Field className={s.field} type="tel" name="usertel" placeholder="Phone number" />
+        </label>
+        <label className={s.label}>Number
+        <Field className={s.field} type="tel" name="usertel"  />
         <ErrorMessage name="usertel" component="span" className={s.error} />
-        <button type="submit">Add contact</button>
+        </label>
+        <button className={s.button} type="submit">Add contact</button>
       </Form>
     </Formik>
   );
