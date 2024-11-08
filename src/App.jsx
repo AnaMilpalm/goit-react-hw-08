@@ -2,7 +2,7 @@ import './App.css';
 import ContactForm from './components/ContactForm/ContactForm';
 import ContactsList from './components/ContactList/ContactList';
 import "modern-normalize";
-import Filter from './components/Filter/Filter';
+import SearchBox from './components/SearchBox/SearchBox';
 import { useState, useEffect } from 'react';
 import inicialsContacts from './assets/contacts.json'; 
 
@@ -40,7 +40,7 @@ function App() {
     <div className='wrapper'>
       <h1>Phonebook</h1>
       <ContactForm onAdd={addContact} />
-      <Filter value={filter} onFilter={setFilter} />
+      <SearchBox value={filter} onFilter={setFilter} />
       <ContactsList contacts={visibleContacts} onDelete={deleteContact} />
     </div>
   );

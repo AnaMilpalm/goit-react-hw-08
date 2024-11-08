@@ -1,5 +1,5 @@
-import s from './Filter.module.css';
-const Filter = ( {value, onFilter} ) => {
+import s from './SearchBox.module.css';
+const SearchBox = ( {value, onFilter} ) => {
     return (
         <div className={s.filterBox}>
             <label className={s.label}>Find contacts by name</label>
@@ -7,4 +7,4 @@ const Filter = ( {value, onFilter} ) => {
         </div>
     )
 }
-export default Filter;
+export default SearchBox;
