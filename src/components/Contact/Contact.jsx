@@ -2,7 +2,7 @@ import { IoPersonSharp } from "react-icons/io5";
 import { IoCallSharp } from "react-icons/io5";
 
 import s from "./Contact.module.css";
-const Contact = ({ data: { id, name, number }, onDelete }) => {
+const Contact = () => {
   return (
     <div className={s.container}>
       <div className={s.contactsBox}>
