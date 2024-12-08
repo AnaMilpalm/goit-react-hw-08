@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
-
 import s from "./ContactList.module.css";
+import Contact from "../Contact/Contact";
 import { deleteContact } from "../../redux/contactsSlice";
 
 const ContactsList = () => {
@@ -16,18 +16,10 @@ const ContactsList = () => {
     <ul className={s.list}>
       {visibleContacts.map((contact) => (
         <li className="s.item" key={contact.id}>
-          <div className={s.container}>
-            <div className={s.contactsBox}>
-              <span className={s.text}>{contact.name}</span>
-              <span className={s.text}>{contact.number}</span>
-            </div>
-            <button
-              className={s.btn}
-              onClick={() => dispatch(deleteContact(contact.id))}
-            >
-              Delete
-            </button>
-          </div>
+          <Contact
+            contact={contact}
+            onDelete={() => dispatch(deleteContact(contact.id))}
+          />
         </li>
       ))}
     </ul>
