@@ -1,34 +1,34 @@
-import './App.css';
-import ContactForm from './components/ContactForm/ContactForm';
-import ContactsList from './components/ContactList/ContactList';
+import "./App.css";
+import ContactForm from "./components/ContactForm/ContactForm";
+import ContactsList from "./components/ContactList/ContactList";
 import "modern-normalize";
-import SearchBox from './components/SearchBox/SearchBox';
-import { useState, useEffect } from 'react';
-import inicialsContacts from './assets/contacts.json'; 
+import SearchBox from "./components/SearchBox/SearchBox";
+import { useState, useEffect } from "react";
+import inicialsContacts from "./assets/contacts.json";
 
 function App() {
   const [contacts, setContacts] = useState(() => {
-    const savedContacts = localStorage.getItem('contacts');
-    return savedContacts ? JSON.parse(savedContacts) : inicialsContacts; 
+    const savedContacts = localStorage.getItem("contacts");
+    return savedContacts ? JSON.parse(savedContacts) : inicialsContacts;
   });
 
-  const [filter, setFilter] = useState('');
+  const [filter, setFilter] = useState("");
 
   useEffect(() => {
     if (contacts && contacts.length > 0) {
-      localStorage.setItem('contacts', JSON.stringify(contacts)); 
+      localStorage.setItem("contacts", JSON.stringify(contacts));
     }
   }, [contacts]);
 
   const addContact = (newContact) => {
     setContacts((prevContacts) => {
-      return [...prevContacts, newContact]; 
+      return [...prevContacts, newContact];
     });
   };
 
   const deleteContact = (contactId) => {
     setContacts((prevContacts) => {
-      return prevContacts.filter((contact) => contact.id !== contactId); 
+      return prevContacts.filter((contact) => contact.id !== contactId);
     });
   };
 
@@ -37,7 +37,7 @@ function App() {
   );
 
   return (
-    <div className='wrapper'>
+    <div className="wrapper">
       <h1>Phonebook</h1>
       <ContactForm onAdd={addContact} />
       <SearchBox value={filter} onFilter={setFilter} />
