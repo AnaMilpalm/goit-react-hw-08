@@ -1,8 +1,11 @@
 import { IoPersonSharp } from "react-icons/io5";
 import { IoCallSharp } from "react-icons/io5";
 import s from "./Contact.module.css";
+import { deleteContact } from "../../redux/operations";
+import { useDispatch } from "react-redux";
 
-const Contact = ({ contact, onDelete }) => {
+const Contact = ({ contact }) => {
+  const dispatch = useDispatch();
   return (
     <div className={s.container}>
       <div className={s.contactsBox}>
@@ -15,7 +18,10 @@ const Contact = ({ contact, onDelete }) => {
           {contact.number}
         </span>
       </div>
-      <button className={s.btn} onClick={onDelete}>
+      <button
+        className={s.btn}
+        onClick={() => dispatch(deleteContact(contact.id))}
+      >
         Delete
       </button>
     </div>

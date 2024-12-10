@@ -9,7 +9,7 @@
   color: #000;
   font-size: 20px;
   gap: 10px;
-  min-width: 300px;
+  min-width: 330px;
   .btn {
     display: flex;
     align-items: center;
