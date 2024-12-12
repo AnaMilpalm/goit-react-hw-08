@@ -1,7 +1,7 @@
 import { IoPersonSharp } from "react-icons/io5";
 import { IoCallSharp } from "react-icons/io5";
 import s from "./Contact.module.css";
-import { deleteContact } from "../../redux/operations";
+import { deleteContact } from "../../redux/contactsOps";
 import { useDispatch } from "react-redux";
 
 const Contact = ({ contact }) => {

@@ -4,7 +4,7 @@ import { nanoid } from "nanoid";
 import * as Yup from "yup";
 
 import { useDispatch } from "react-redux";
-import { addContact } from "../../redux/operations";
+import { addContact } from "../../redux/contactsOps";
 
 const FeedbackSchema = Yup.object().shape({
   username: Yup.string()
@@ -22,7 +22,6 @@ const ContactForm = () => {
 
   const handleSubmit = (values, { resetForm }) => {
     const newContact = {
-      id: nanoid(),
       name: values.username,
       number: values.usertel,
     };

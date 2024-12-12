@@ -31,6 +31,9 @@
     display: flex;
     gap: 5px;
     align-items: end;
+    max-width: 215px;
+    overflow: hidden;
+    height: 32px;
     .icon {
       margin-bottom: 4px;
     }
