@@ -1,6 +1,6 @@
 import { useEffect } from "react";
-import { useDispatch } from "react-redux";
-import { fetchAllContacts } from "./redux/contactsOps";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchAllContacts } from "./redux/contacts/contactsOps";
 // import ContactForm from "./components/ContactForm/ContactForm";
 // import SearchBox from "./components/SearchBox/SearchBox";
 import "./App.css";
@@ -12,24 +12,41 @@ import ContactsPage from "./pages/ContactsPage/ContactsPage";
 import NotFound from "./pages/NotFound/NotFound";
 import RegistrationPage from "./pages/RegistrationPage/RegistrationPage";
 import LoginPage from "./pages/LoginPage/LoginPage";
+import { selectIsRefreshing } from "./redux/auth/selectors";
+import PrivateRoute from "./PrivateRoute";
+import RestrictedRoute from "./RestrictedRoute";
 
 function App() {
   const dispatch = useDispatch();
+  const isRefreshing = useSelector(selectIsRefreshing);
 
   useEffect(() => {
     dispatch(fetchAllContacts());
   }, [dispatch]);
 
-  return (
+  return isRefreshing ? null : (
     <Routes>
       <Route path="/" element={<Layout />}>
         <Route index element={<HomePage />} />
-        <Route path="/contacts" element={<ContactsPage />} />
-        <Route path="/register" element={<RegistrationPage />} />
-
+        <Route
+          path="/contacts"
+          element={
+            <PrivateRoute>
+              <ContactsPage />
+            </PrivateRoute>
+          }
+        />
         <Route path="*" element={<NotFound />} />
       </Route>
-      <Route path="/login" element={<LoginPage />} />
+      <Route
+        path="register"
+        element={<RestrictedRoute component={<RegistrationPage />} />}
+      />
+
+      <Route
+        path="/login"
+        element={<RestrictedRoute component={<LoginPage />} />}
+      />
     </Routes>
   );
 }
