@@ -15,13 +15,14 @@ import LoginPage from "./pages/LoginPage/LoginPage";
 import { selectIsRefreshing } from "./redux/auth/selectors";
 import PrivateRoute from "./PrivateRoute";
 import RestrictedRoute from "./RestrictedRoute";
+import { refreshUser } from "./redux/auth/operations";
 
 function App() {
   const dispatch = useDispatch();
   const isRefreshing = useSelector(selectIsRefreshing);
 
   useEffect(() => {
-    dispatch(fetchAllContacts());
+    dispatch(refreshUser());
   }, [dispatch]);
 
   return isRefreshing ? null : (
