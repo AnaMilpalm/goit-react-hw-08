@@ -29,8 +29,8 @@ const RegistrationForm = () => {
       <h2>Register</h2>
       <Formik onSubmit={handleSubmit} initialValues={initialValues}>
         <Form className={css.form}>
-          <Field name="name" placeholder="Enter name" />
-          <Field name="email" placeholder="Enter email" />
+          <Field name="name" type="text" placeholder="Enter name" />
+          <Field name="email" type="email" placeholder="Enter email" />
           <Field name="password" type="password" placeholder="Enter password" />
           <button type="submit">Submit</button>
         </Form>
