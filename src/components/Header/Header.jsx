@@ -15,14 +15,12 @@ const Header = () => {
   const dispatch = useDispatch();
   return (
     <header className={css.header}>
-      {isLoggedIn && <div>{user.email}</div>}
+      {isLoggedIn && <div className={css.userMail}>{user.email}</div>}
       <nav className={css.nav}>
         <NavLink to="/" className={buildLinkClass}>
           Home
         </NavLink>
-        <NavLink to="/contacts" className={buildLinkClass}>
-          Contacts
-        </NavLink>
+
         {!isLoggedIn && (
           <>
             <NavLink to="/register" className={buildLinkClass}>
@@ -34,7 +32,12 @@ const Header = () => {
           </>
         )}
         {isLoggedIn && (
-          <button onClick={() => dispatch(logout())}>Logout</button>
+          <>
+            <NavLink to="/contacts" className={buildLinkClass}>
+              Contacts
+            </NavLink>
+            <button onClick={() => dispatch(logout())}>Logout</button>
+          </>
         )}
       </nav>
     </header>

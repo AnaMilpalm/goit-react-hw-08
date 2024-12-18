@@ -1,7 +1,33 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  width: 100%;
+}
+
+.nav {
+  display: flex;
+  justify-content: space-between;
+  gap: 40px;
+  align-items: center;
+  width: 100%;
+}
+a {
+  padding: 5px 10px;
+  text-transform: uppercase;
+}
+
+.userMail {
+  color: rgb(209, 212, 216);
+}
 .link {
-  background-color: rgb(217, 79, 14);
+  color: aliceblue;
 }
 
 .active {
-  background-color: rgb(20, 20, 20);
+  box-shadow: 0 5px #ffffff68;
+  text-transform: all 0.5s ease-out;
+  &:hover {
+    box-shadow: 0 5px #ffffffb4;
+  }
 }

@@ -1,0 +1,16 @@
+.heading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.mainTitle {
+  display: flex;
+  font-size: 6rem;
+  color: #fff;
+  box-shadow: 0 10px #ffffff78;
+}
+.icon {
+  display: flex;
+  color: #fff;
+}
