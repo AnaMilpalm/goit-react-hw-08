@@ -26,6 +26,7 @@ const slice = createSlice({
         state.user = action.payload.user;
         state.token = action.payload.token;
         state.isLoggedIn = true;
+        console.log("Token після логіну:", action.payload.token);
       })
       .addCase(logout.fulfilled, () => {
         return initialState;
@@ -35,11 +36,11 @@ const slice = createSlice({
         state.isLoggedIn = true;
         state.isRefreshing = false;
       })
-      .addCase(refreshUser.pending, (state, action) => {
+      .addCase(refreshUser.pending, (state) => {
         state.isRefreshing = true;
       })
-      .addCase(refreshUser.rejected, (state, action) => {
-        state.isRefreshing = true;
+      .addCase(refreshUser.rejected, (state) => {
+        state.isRefreshing = false;
       });
   },
 });

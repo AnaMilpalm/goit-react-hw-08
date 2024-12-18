@@ -2,17 +2,16 @@ import { Field, Form, Formik } from "formik";
 import css from "./RegistrationForm.module.css";
 import { useDispatch } from "react-redux";
 import toast from "react-hot-toast";
-import { useNavigate } from "react-router-dom";
+
 import { register } from "../../redux/auth/operations";
 const RegistrationForm = () => {
   const dispatch = useDispatch();
-  const navigate = useNavigate();
+
   const handleSubmit = (values, options) => {
     dispatch(register(values))
       .unwrap()
       .then((res) => {
         toast(`Welcome ${res?.user?.name}`);
-        navigate("/contacts");
       })
       .catch(() => {
         toast.error("Друже, ти не правий! Спробуй ще раз!");

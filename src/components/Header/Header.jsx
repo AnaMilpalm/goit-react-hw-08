@@ -15,9 +15,8 @@ const Header = () => {
   const dispatch = useDispatch();
   return (
     <header className={css.header}>
-      <h3>Phonebook</h3>
       {isLoggedIn && <div>{user.email}</div>}
-      <ul className={css.nav}>
+      <nav className={css.nav}>
         <NavLink to="/" className={buildLinkClass}>
           Home
         </NavLink>
@@ -37,7 +36,7 @@ const Header = () => {
         {isLoggedIn && (
           <button onClick={() => dispatch(logout())}>Logout</button>
         )}
-      </ul>
+      </nav>
     </header>
   );
 };

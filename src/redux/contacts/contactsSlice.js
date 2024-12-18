@@ -15,8 +15,9 @@ const slice = createSlice({
         state.loading = true;
         state.error = null;
       })
-      .addCase(logout.fulfilled, () => {
-        return initialState;
+      .addCase(logout.fulfilled, (state) => {
+        (state.items = []), (state.error = null);
+        state.isLoading = false;
       })
       .addCase(fetchAllContacts.fulfilled, (state, action) => {
         state.items = action.payload;

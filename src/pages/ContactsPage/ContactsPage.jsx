@@ -1,6 +1,6 @@
 import ContactsList from "../../components/ContactList/ContactList";
 
-const Contacts = () => {
+const ContactsPage = () => {
   return (
     <>
       <ContactsList />
@@ -8,4 +8,4 @@ const Contacts = () => {
   );
 };
 
-export default Contacts;
+export default ContactsPage;

@@ -1,24 +1,24 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
+axios.defaults.baseURL = "https://connections-api.goit.global/";
 
-export const goitApi = axios.create({
-  baseURL: "https://connections-api.goit.global/",
-  // "https://task-manager-api.goit.global",
-});
-
-const setAuthHeader = (token) => {
-  goitApi.defaults.headers.common.Authorization = `Bearer ${token}`;
+export const setAuthHeader = (token) => {
+  axios.defaults.headers.common.Authorization = `Bearer ${token}`;
+  console.log(
+    "Заголовок Authorization встановлено як:",
+    axios.defaults.headers.common.Authorization
+  );
 };
 
-const clearAuthHeader = () => {
-  goitApi.defaults.headers.common.Authorization = ``;
+export const clearAuthHeader = () => {
+  axios.defaults.headers.common.Authorization = ``;
 };
 
 export const register = createAsyncThunk(
   "auth/register",
   async (credentials, thunkAPI) => {
     try {
-      const response = await goitApi.post("/users/signup", credentials);
+      const response = await axios.post("/users/signup", credentials);
       setAuthHeader(response.data.token);
       return response.data;
     } catch (error) {
@@ -31,7 +31,7 @@ export const login = createAsyncThunk(
   "auth/login",
   async (credentials, thunkAPI) => {
     try {
-      const response = await goitApi.post("/users/login", credentials);
+      const response = await axios.post("/users/login", credentials);
       setAuthHeader(response.data.token);
       return response.data;
     } catch (error) {
@@ -42,7 +42,7 @@ export const login = createAsyncThunk(
 
 export const logout = createAsyncThunk("auth/logout", async (_, thunkAPI) => {
   try {
-    await goitApi.post("/users/logout");
+    await axios.post("/users/logout");
     clearAuthHeader();
   } catch (error) {
     return thunkAPI.rejectWithValue(error.message);
@@ -53,7 +53,7 @@ export const refreshUser = createAsyncThunk(
   "auth/refresh",
   async (_, thunkAPI) => {
     const savedToken = thunkAPI.getState().auth.token;
-    console.log(savedToken);
+    console.log("Token при рефреші:", savedToken);
 
     if (!savedToken) {
       return thunkAPI.rejectWithValue("Token is not exist!");
@@ -61,7 +61,7 @@ export const refreshUser = createAsyncThunk(
 
     try {
       setAuthHeader(savedToken);
-      const { data } = await goitApi.get("/users/me");
+      const { data } = await axios.get("/users/current");
       return data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
