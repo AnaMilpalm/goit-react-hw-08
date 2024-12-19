@@ -2,8 +2,10 @@ import { Field, Form, Formik } from "formik";
 import css from "./RegistrationForm.module.css";
 import { useDispatch } from "react-redux";
 import toast from "react-hot-toast";
+import { LuCircleArrowRight } from "react-icons/lu";
 
 import { register } from "../../redux/auth/operations";
+
 const RegistrationForm = () => {
   const dispatch = useDispatch();
 
@@ -27,15 +29,33 @@ const RegistrationForm = () => {
     <div className={css.wrapper}>
       <Formik onSubmit={handleSubmit} initialValues={initialValues}>
         <Form className={css.form}>
-          <Field name="name" type="text" placeholder="Enter name" required />
-          <Field name="email" type="email" placeholder="Enter email" required />
           <Field
+            className={css.field}
+            name="name"
+            type="text"
+            placeholder="Enter name"
+            required
+          />
+          <Field
+            className={css.field}
+            name="email"
+            type="email"
+            placeholder="Enter email"
+            required
+          />
+          <Field
+            className={css.field}
             name="password"
             type="password"
             placeholder="Enter password"
             required
           />
-          <button type="submit">Submit</button>
+          <div className={css.buttonBox}>
+            <button className={css.button} type="submit">
+              <span>Submit</span>
+              <LuCircleArrowRight size="20" className={css.icon} />
+            </button>
+          </div>
         </Form>
       </Formik>
     </div>

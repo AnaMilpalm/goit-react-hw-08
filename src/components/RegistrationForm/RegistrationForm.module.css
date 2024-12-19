@@ -1,11 +1,40 @@
 .wrapper {
   display: flex;
   flex-direction: column;
-  width: 80%;
   align-items: center;
 }
 .form {
   display: flex;
   flex-direction: column;
   padding: 10px 20px;
+  gap: 10px;
+  width: 310px;
+}
+.field {
+  display: flex;
+  margin-bottom: 20px;
+  padding: 10px 10px;
+  outline: none;
+  border: none;
+  border-radius: 3px;
+}
+.buttonBox {
+  display: flex;
+  justify-content: baseline;
+
+  span {
+    display: flex;
+    color: #605959;
+  }
+  .button {
+    display: flex;
+    padding: 10px 20px;
+    justify-items: baseline;
+    border-radius: 4px;
+    cursor: pointer;
+    .icon {
+      color: #605959;
+      margin-left: 10px;
+    }
+  }
 }

@@ -18,7 +18,8 @@ a {
 }
 
 .userMail {
-  color: rgb(209, 212, 216);
+  color: rgb(217, 222, 228);
+  font-size: 19px;
 }
 .link {
   color: aliceblue;

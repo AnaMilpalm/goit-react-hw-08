@@ -15,12 +15,13 @@ const Header = () => {
   const dispatch = useDispatch();
   return (
     <header className={css.header}>
-      {isLoggedIn && <div className={css.userMail}>{user.email}</div>}
       <nav className={css.nav}>
         <NavLink to="/" className={buildLinkClass}>
           Home
         </NavLink>
-
+        {isLoggedIn && (
+          <div className={css.userMail}>Welcome, {user.email}</div>
+        )}
         {!isLoggedIn && (
           <>
             <NavLink to="/register" className={buildLinkClass}>
