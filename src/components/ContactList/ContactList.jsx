@@ -7,11 +7,11 @@ import { fetchAllContacts } from "../../redux/contacts/contactsOps";
 
 const ContactsList = () => {
   const contacts = useSelector(selectFilteredContacts);
-  // const dispatch = useDispatch();
+  const dispatch = useDispatch();
 
-  // useEffect(() => {
-  //   dispatch(fetchAllContacts());
-  // }, [dispatch]);
+  useEffect(() => {
+    dispatch(fetchAllContacts());
+  }, [dispatch]);
 
   return (
     <ul className={s.list}>
